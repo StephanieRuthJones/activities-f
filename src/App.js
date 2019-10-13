@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  render() {
+    return (
+      <div className="App" >
+        <h1>Adam and Steph's Excellent Adventure</h1>
+        <div className="navbar">
+          <a href="#home">All Activities</a>
+          <a href="#home">Completed Activities</a>
+          <a href="#news">Images</a>
+          <div className="dropdown">
+            <button className="dropbtn">Dropdown
+      <i className="fa fa-caret-down"></i>
+            </button>
+            <div className="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a>Link 3</a>
+            </div>
+          </div>
+        </div>
+        {/* <div className="topnav">
+        <button>All Activities</button>
+        <button>
+          Show menu
+        </button>
+
+        <div className="menu">
+          <button> Menu item 1 </button>
+          <button> Menu item 2 </button>
+          <button> Menu item 3 </button>
+        </div>
+
+        <input type="text" name="search" placeholder="Search..." />
+      </div> */}
+
+      </div >
+    )
+  }
 }
 
 export default App;
