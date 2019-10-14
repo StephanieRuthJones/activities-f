@@ -1,16 +1,67 @@
+
 body {
   margin: 0;
   padding: 0;
   text-align: center;
+  background: lavender;
+  color: black;
+  background-image: url(./images/steph_and_adam.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  align-content: center;
+}
+
+.body-container {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.title {
+  color: white;
+  background-color: #333;
+  width: 50%;
+  margin: auto;
+  margin-top: 40px;
+  padding: 30px;
+  border: solid white 10px;
+}
+
+.new-activity-form {
+  background-color: white;
+  margin: 10px;
+  padding: 30px;
+  color: #333;
+  border: solid #333 10px;
+  font-size: 30px;
+}
+
+.activities-list {
+  border: solid #333 10px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.activities-list h1 {
+  color: white;
+}
+
+input {
+  margin: 30px;
+  padding: 10px;
+  height: 25px;
+  width: 50;
+  border: solid;
 }
 
 .navbar {
   overflow: hidden;
   background-color: #333;
-  font-family: Arial;
+  height: 50px;
+
 }
 
-/* Links inside the navbar */
 .navbar a {
   float: left;
   font-size: 16px;
@@ -20,13 +71,11 @@ body {
   text-decoration: none;
 }
 
-/* The dropdown container */
 .dropdown {
   float: left;
   overflow: hidden;
 }
 
-/* Dropdown button */
 .dropdown .dropbtn {
   font-size: 16px;
   border: none;
@@ -34,16 +83,15 @@ body {
   color: white;
   padding: 14px 16px;
   background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
+  font-family: inherit;
+  margin: 0;
 }
 
-/* Add a red background color to navbar links on hover */
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: blue;
+  background-color: white;
+  color: #333;
 }
 
-/* Dropdown content (hidden by default) */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -53,7 +101,6 @@ body {
   z-index: 1;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
   float: none;
   color: black;
@@ -63,12 +110,39 @@ body {
   text-align: left;
 }
 
-/* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: white;
+  color: #333;
 }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
+}
+.activities-container {
+  margin: auto;
+  padding: auto;
+}
+.activity {
+  background-color: white;
+  padding: 10px;
+  margin: auto;
+  margin-top: 30px;
+  width: 66%;
+  border: solid #333 10px;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  margin: 20px;
+  height: 25px;
+  width: 5rem;
+}
+
+button:hover {
+  background-color: blue;
+  color: white;
+  margin: 20px;
+  height: 25px;
+  width: 5rem;
 }

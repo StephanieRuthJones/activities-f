@@ -1,42 +1,68 @@
 import React from 'react';
 import './App.css';
 
+import Navbar from './components/Navbar'
+import NewActivityForm from './components/NewActivityForm'
+import ActivitiesList from './components/ActivitiesList'
+
 class App extends React.Component {
+  state = {
+    activities: []
+  }
+
+  componentDidMount() {
+    fetch("https://pure-caverns-09499.herokuapp.com/activities")
+      .then(response => response.json())
+      .then(activities => this.setState({ activities }))
+  }
+
+  addActivity = (newActivity) => {
+    console.log("form data", newActivity)
+
+
+
+    fetch("https://pure-caverns-09499.herokuapp.com/activities", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: newActivity.title,
+        description: newActivity.description
+      })
+    })
+      .then(response => response.json())
+      .then(console.log)
+
+    this.setState({
+      activities: [...this.state.activities, newActivity]
+    })
+  }
+
+  // deleteActivity = (event, activity) => {
+  // console.log("data", event.target.parentNode)
+  // event.target.parentNode.remove()
+  // fetch(`https://pure-caverns-09499.herokuapp.com/activities/${activity.id}`, method: 'DELETE').then(response =>
+  //   response.json().then(json => {
+  //     return json;
+  //   })
+  // );
+
+
+
+  // }
 
   render() {
+    console.log("state", this.state.activities)
     return (
       <div className="App" >
-        <h1>Adam and Steph's Excellent Adventure</h1>
-        <div className="navbar">
-          <a href="#home">All Activities</a>
-          <a href="#home">Completed Activities</a>
-          <a href="#news">Images</a>
-          <div className="dropdown">
-            <button className="dropbtn">Dropdown
-      <i className="fa fa-caret-down"></i>
-            </button>
-            <div className="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a>Link 3</a>
-            </div>
-          </div>
+        <Navbar />
+        <h1 className="title">Steph and Adam's Excellent Adventure</h1>
+        <div className="body-container">
+          <NewActivityForm addActivity={this.addActivity} />
+
+          <ActivitiesList activities={this.state.activities} deleteActivity={this.deleteActivity} />
         </div>
-        {/* <div className="topnav">
-        <button>All Activities</button>
-        <button>
-          Show menu
-        </button>
-
-        <div className="menu">
-          <button> Menu item 1 </button>
-          <button> Menu item 2 </button>
-          <button> Menu item 3 </button>
-        </div>
-
-        <input type="text" name="search" placeholder="Search..." />
-      </div> */}
-
       </div >
     )
   }
