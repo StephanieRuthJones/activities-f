@@ -7,9 +7,9 @@ const Navbar = () => {
             <a href="#home">Completed Activities</a>
             <a href="#news">Images</a>
             <div className="dropdown">
-                <button className="dropbtn">Sort by Tag</button>
+                <button className="dropbtn">Sort</button>
                 <div className="dropdown-content">
-                    <a href="#">Link 1</a>
+                    <a>Link 1</a>
                     <a>Link 2</a>
                     <a>Link 3</a>
                 </div>

@@ -29,7 +29,7 @@ class NewActivityForm extends React.Component {
                 <input name="title" onChange={this.handleChange} />
                 <label htmlFor="title">Description</label>
                 <input name="description" onChange={this.handleChange} />
-                <input type="submit" value="Submit" />
+                <button type="submit">Submit</button>
             </form>
         )
     }

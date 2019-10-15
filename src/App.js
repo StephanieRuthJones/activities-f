@@ -2,9 +2,8 @@ import React from 'react';
 import './App.css';
 
 import Navbar from './components/Navbar'
-import NewActivityForm from './components/NewActivityForm'
-import ActivitiesList from './components/ActivitiesList'
-
+import Header from './components/Header'
+import BodyContainer from './components/containers/BodyContainer'
 class App extends React.Component {
   state = {
     activities: []
@@ -18,6 +17,9 @@ class App extends React.Component {
 
   addActivity = (newActivity) => {
     console.log("form data", newActivity)
+    this.setState({
+      activities: [...this.state.activities, newActivity]
+    })
 
 
 
@@ -32,37 +34,36 @@ class App extends React.Component {
       })
     })
       .then(response => response.json())
-      .then(console.log)
+      .then(alert("Activity added"))
+      .catch(console.error)
 
-    this.setState({
-      activities: [...this.state.activities, newActivity]
-    })
+
   }
 
-  // deleteActivity = (event, activity) => {
-  // console.log("data", event.target.parentNode)
-  // event.target.parentNode.remove()
-  // fetch(`https://pure-caverns-09499.herokuapp.com/activities/${activity.id}`, method: 'DELETE').then(response =>
-  //   response.json().then(json => {
-  //     return json;
-  //   })
-  // );
-
-
-
-  // }
+  deleteActivity = (event, activity) => {
+    console.log("data", activity.id)
+    event.target.parentNode.remove()
+    fetch(`https://pure-caverns-09499.herokuapp.com/activities/${activity.id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(console.error)
+  }
 
   render() {
     console.log("state", this.state.activities)
     return (
       <div className="App" >
         <Navbar />
-        <h1 className="title">Steph and Adam's Excellent Adventure</h1>
-        <div className="body-container">
-          <NewActivityForm addActivity={this.addActivity} />
 
-          <ActivitiesList activities={this.state.activities} deleteActivity={this.deleteActivity} />
-        </div>
+        <Header addActivity={this.addActivity} />
+
+        <BodyContainer
+          activities={this.state.activities}
+          deleteActivity={this.deleteActivity}
+        />
+
       </div >
     )
   }
